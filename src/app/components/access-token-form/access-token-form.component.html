@@ -1,0 +1,25 @@
+<div class="access-form-container">
+  <h1>GitHub Issue Explorer</h1>
+
+  <h3>Enter your API token to start browsing issues of public repositories</h3>
+
+  <form [formGroup]="accessTokenForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="username">Your API Token</label>
+      <p>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Access Token"
+          formControlName="accessToken"
+        />
+      </p>
+    </div>
+    <div *ngIf="errorMessage.length > 0" class="error-msg">{{ errorMessage }}</div>
+    <br>
+    <button class="btn" type="submit">Start Browsing</button>
+  </form>
+
+  {{ token }}
+  <mat-spinner *ngIf="isUserLoading$ | async" class="spinner"></mat-spinner>
+</div>
